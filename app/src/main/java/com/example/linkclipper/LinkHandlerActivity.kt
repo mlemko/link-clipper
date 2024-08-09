@@ -34,7 +34,7 @@ class LinkHandlerActivity : AppCompatActivity() {
             //handle intent
             handleSentText(intent)
         }
-
+        finish()
     }
 
     private fun handleSentText(thIntent: Intent) {
