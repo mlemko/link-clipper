@@ -1,17 +1,8 @@
 package com.example.linkclipper
 
-import android.content.Intent
-import android.net.Uri
-import android.os.Bundle
-import android.app.Activity
-import android.app.AlertDialog
-import android.content.ComponentName
 import android.content.Context
-import android.os.Parcelable
-import android.util.Log
-import android.view.View
-import android.widget.Toast
-import android.widget.Toast.LENGTH_LONG
+import android.content.Intent
+import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import java.io.Console
 import java.io.Serializable
@@ -40,15 +31,15 @@ class LinkHandlerActivity : AppCompatActivity() {
     }
 
     private fun handleSentText(thIntent: Intent) {
-        val sharedText: String? = thIntent.getStringExtra(Intent.EXTRA_TEXT);
+        val sharedText: String? = thIntent.getStringExtra(Intent.EXTRA_TEXT)
         if (sharedText != null) {
             val linkStart = sharedText.indexOf("http")
             if (linkStart > -1) {
                 val linkEnd = sharedText.lastIndexOf(' ', linkStart)
                 val link: String = if (linkEnd > -1) {
-                    sharedText.substring(linkStart, linkEnd);
+                    sharedText.substring(linkStart, linkEnd)
                 } else {
-                    sharedText.substring(linkStart);
+                    sharedText.substring(linkStart)
                 }
                 val beforeParams = link.substringBefore('?')
                 val params = link.substringBefore('#').substringAfter('?')
@@ -75,6 +66,7 @@ class LinkHandlerActivity : AppCompatActivity() {
             }
         }
     }
+
     private fun shareLinkActivity(link: String) {
         val sendIntent = Intent()
             .setAction(Intent.ACTION_SEND)
@@ -82,15 +74,16 @@ class LinkHandlerActivity : AppCompatActivity() {
             .setType("text/plain")
         startActivity(Intent.createChooser(sendIntent, "Share clipped link:"))
     }
+
     private fun urlParamParse(params: String): MutableMap<String, String> {
         val paramMap = mutableMapOf<String, String>()
         var keyOrValue = false
         var key = ""
         var value = ""
         for (c in params) {
-            if (c == '='){
+            if (c == '=') {
                 keyOrValue = true
-            } else if (c == '&'){
+            } else if (c == '&') {
                 paramMap[key] = value
                 key = ""
                 value = ""
