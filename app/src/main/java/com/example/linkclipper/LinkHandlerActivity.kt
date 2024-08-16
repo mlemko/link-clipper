@@ -23,7 +23,9 @@ class LinkHandlerActivity : AppCompatActivity() {
     private val domainToSidMarker: Map<String, String> = mapOf(
         "youtube.com" to "si",
         "youtu.be" to "si",
-        "instagram.com" to "igsh"
+        "instagram.com" to "igsh",
+        "tumblr.com" to "source",
+        "spotify.com" to "si"
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
