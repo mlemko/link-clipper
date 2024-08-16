@@ -4,13 +4,19 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import java.io.Console
-import java.io.Serializable
-
+import okhttp3.Call
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.Callback
+import  okhttp3.Response
+import java.io.IOException
+import java.util.regex.Pattern
 
 
 class LinkHandlerActivity : AppCompatActivity() {
 
+
+    // Contains the related source identifier markers for each domain.
     private val domainToSidMarker: Map<String, String> = mapOf(
         "youtube.com" to "si",
         "youtu.be" to "si",
@@ -22,9 +28,8 @@ class LinkHandlerActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val data: Uri? = intent?.data
         if (intent?.type == "text/plain") {
-            //handle intent
+            //handle link
             handleSentText(intent)
         }
         finish()
@@ -98,5 +103,36 @@ class LinkHandlerActivity : AppCompatActivity() {
         }
         paramMap[key] = value
         return paramMap
+    }
+
+    private fun downloadFileInInternalStorage(link: String, fileName: String) {
+        val mFileName = fileName.replace(" ", "_")
+            .replace(Pattern.compile("[.][.]+").toRegex(), ".")
+
+        val request = Request.Builder()
+            .url(link)
+            .build()
+        val client = OkHttpClient.Builder()
+            .build()
+
+        client.newCall(request).enqueue(object : Callback {
+            override fun onResponse(call: Call, response: Response) {
+                val fileData = response.body?.byteStream()
+                if (fileData != null) {
+                    try {
+                        applicationContext.openFileOutput(mFileName, Context.MODE_PRIVATE)
+                            .use { output ->
+                                output.write(fileData.readBytes())
+                            }
+                    } catch (e: IOException) {
+                        e.printStackTrace()
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call, e: IOException) {
+                e.printStackTrace()
+            }
+        })
     }
 }
