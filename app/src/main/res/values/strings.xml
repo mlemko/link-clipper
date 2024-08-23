@@ -43,4 +43,26 @@
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
+    <string name="info">
+        Link Clipper is an app that removes source identifiers and other tracking data from links.
+    </string>
+    <string name="instructions_title">
+        How to use:
+    </string>
+    <string name="instructions1">
+        1. When sharing a link, select <b>Link Clipper</b> as the target.
+    </string>
+    <string name="instructions2">
+        2. Afterwards, a second share menu will open with the cleaned link. Select the app that you want to share the link to as you would normally.
+    </string>
+    <string name="instructions3">
+        3. And you\'re done! Enjoy your tracker-free link.
+    </string>
+    <string name="alt_instruction">
+        Alternatively, paste a link into the text box below and press "Clip" to receive a clipped link.
+    </string>
+    <string name="default_box_text">
+        Link here…
+    </string>
+    <string name="logo_desc">Sample Logo</string>
 </resources>
