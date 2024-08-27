@@ -1,0 +1,46 @@
+{
+  "domain_list": [
+    {
+      "youtube.com": {
+        "clipAction": [
+          0
+        ],
+        "siMarkers": [
+          "si"
+        ]
+      },
+      "youtu.be": {
+        "clipAction": [
+          0
+        ],
+        "siMarkers": [
+          "si"
+        ]
+      },
+      "instagram.com": {
+        "clipAction": [
+          0
+        ],
+        "siMarkers": [
+          "igsh"
+        ]
+      },
+      "tumblr.com": {
+        "clipAction": [
+          0
+        ],
+        "siMarkers": [
+          "source"
+        ]
+      },
+      "open.spotify.com": {
+        "clipAction": [
+          0
+        ],
+        "siMarkers": [
+          "si"
+        ]
+      }
+    }
+  ]
+}
