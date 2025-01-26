@@ -20,7 +20,7 @@ class ClipAction(private val type: ClipType, private val content: List<String>?)
             REMOVE_SI -> {
                 val beforeParams = link.substringBefore('?')
                 val afterParams = link.substringAfter('#', missingDelimiterValue = "")
-                val params = link.substringBefore('#').substringAfter('?')
+                val params = link.substringBefore('#').substringAfter('?', "")
                 val paramMap = UrlHelper.urlParamParse(params)
                 for (sidMarker in content) {
                     paramMap.remove(sidMarker)
