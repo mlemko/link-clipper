@@ -16,7 +16,7 @@ class ClipAction(private val type: ClipType, private val content: List<String>?)
      */
     fun executeOn(link: String): String {
         var clippedLink = link
-        when(type) {
+        when (type) {
             REMOVE_SI -> {
                 val beforeParams = link.substringBefore('?')
                 val afterParams = link.substringAfter('#', missingDelimiterValue = "")
@@ -32,13 +32,14 @@ class ClipAction(private val type: ClipType, private val content: List<String>?)
                         for ((param, value) in paramMap) {
                             clippedLink += "$param=$value&"
                         }
-                        clippedLink.trimEnd('&')
-                        if (afterParams.isNotEmpty()) {
-                            clippedLink += "#$afterParams"
-                        }
+                        clippedLink = clippedLink.trimEnd('&')
+                    }
+                    if (afterParams.isNotEmpty()) {
+                        clippedLink += "#$afterParams"
                     }
                 }
             }
+
             REMOVE_QUERY -> {
                 val beforeParams = link.substringBefore('?')
                 val afterParams = link.substringAfter('#', missingDelimiterValue = "")
