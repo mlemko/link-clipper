@@ -23,7 +23,9 @@ class UrlHelper {
                     }
                 }
             }
-            paramMap[key] = value
+            if (key.isNotEmpty()){
+                paramMap[key] = value
+            }
             return paramMap
         }
     }
