@@ -43,7 +43,10 @@ class ClipAction(private val type: ClipType, private val content: List<String>?)
             REMOVE_QUERY -> {
                 val beforeParams = link.substringBefore('?')
                 val afterParams = link.substringAfter('#', missingDelimiterValue = "")
-                clippedLink = "$beforeParams#$afterParams"
+                clippedLink = beforeParams
+                if (afterParams.isNotEmpty()) {
+                    clippedLink += "#$afterParams"
+                }
             }
         }
         return clippedLink
