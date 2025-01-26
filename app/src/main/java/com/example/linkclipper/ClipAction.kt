@@ -22,8 +22,10 @@ class ClipAction(private val type: ClipType, private val content: List<String>?)
                 val afterParams = link.substringAfter('#', missingDelimiterValue = "")
                 val params = link.substringBefore('#').substringAfter('?', "")
                 val paramMap = UrlHelper.urlParamParse(params)
-                for (sidMarker in content) {
-                    paramMap.remove(sidMarker)
+                if (content != null) {
+                    for (sidMarker in content) {
+                        paramMap.remove(sidMarker)
+                    }
                     clippedLink = beforeParams
                     if (paramMap.isNotEmpty()) {
                         clippedLink += "?"
