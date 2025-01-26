@@ -17,6 +17,6 @@ class Link(val domain: String, val actions: List<ClipAction>) {
     }
 
     fun domainFor(link: String) : Boolean {
-        return link.indexOf(domain) > -1
+        return link.substringBefore("?").indexOf(domain) > -1
     }
 }
