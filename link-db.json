@@ -1,46 +1,54 @@
 {
-  "domain_list": [
-    {
-      "youtube.com": {
-        "clipAction": [
-          0
-        ],
-        "siMarkers": [
-          "si"
-        ]
-      },
-      "youtu.be": {
-        "clipAction": [
-          0
-        ],
-        "siMarkers": [
-          "si"
-        ]
-      },
-      "instagram.com": {
-        "clipAction": [
-          0
-        ],
-        "siMarkers": [
-          "igsh"
-        ]
-      },
-      "tumblr.com": {
-        "clipAction": [
-          0
-        ],
-        "siMarkers": [
-          "source"
-        ]
-      },
-      "open.spotify.com": {
-        "clipAction": [
-          0
-        ],
-        "siMarkers": [
-          "si"
-        ]
-      }
+  "domain_list": {
+    "youtube.com": {
+      "clipActions": [
+        {
+          "type": 0,
+          "markers": [
+            "si"
+          ]
+        }
+      ]
+    },
+    "youtu.be": {
+      "clipActions": [
+        {
+          "type": 0,
+          "markers": [
+            "si"
+          ]
+        }
+      ]
+    },
+    "instagram.com": {
+      "clipActions": [
+        {
+          "type": 0,
+          "markers": [
+            "igsh"
+          ]
+        }
+      ]
+    },
+    "tumblr.com": {
+      "clipActions": [
+        {
+          "type": 0,
+          "markers": [
+            "source"
+          ]
+        }
+      ]
+    },
+    "open.spotify.com": {
+      "clipActions": [
+        {
+          "type": 0,
+          "markers": [
+            "si"
+          ]
+        }
+      ]
     }
-  ]
+  }
 }
