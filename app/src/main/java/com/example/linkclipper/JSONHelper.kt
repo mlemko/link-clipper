@@ -8,6 +8,7 @@ class JSONHelper {
     companion object {
         fun jsonToLinkDict(j: JSONObject) : MutableMap<String, Link> {
             val d = mutableMapOf<String, Link>()
+            if (j.has("domain_list")) return jsonToLinkDict(j.getJSONObject("domain_list"))
             for (i in 0..<(j.names()?.length() ?: -1)) {
                 val name = j.names()?.getString(i)
                 if (name != null) {
@@ -21,7 +22,7 @@ class JSONHelper {
         }
         fun jsonToLink(json: JSONObject, domain: String) : Link? {
             try {
-                val clips = json.getJSONArray("clipAction")
+                val clips = json.getJSONArray("clipActions")
                 val clist = mutableListOf<ClipAction>()
                 for (i in 0..<clips.length()) {
                     val clip = clips.getJSONObject(i)
@@ -29,7 +30,7 @@ class JSONHelper {
                         REMOVE_SI -> {
                             val markers = mutableListOf<String>()
                             for (j in 0..<clip.getJSONArray("markers").length()) {
-                                clip.getJSONArray("markers").getString(j)
+                                markers.add(clip.getJSONArray("markers").getString(j))
                             }
                             clist.add(ClipAction(type, markers.toList()))
                         }
@@ -41,7 +42,7 @@ class JSONHelper {
                 }
                 return Link(domain, clist)
             } catch (e: Exception) {
-                Log.e("JSON HELPER", "Error when converting to Link!:\n$e")
+              //  Log.e("JSON HELPER", "Error when converting to Link!:\n$e")
             }
             return null
         }
