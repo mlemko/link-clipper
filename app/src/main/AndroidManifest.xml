@@ -35,6 +35,11 @@
                 <data android:mimeType="text/plain"/>
             </intent-filter>
         </activity>
+        <activity
+            android:name=".UpdateDatabaseActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Translucent">
+        </activity>
     </application>
 
 </manifest>
