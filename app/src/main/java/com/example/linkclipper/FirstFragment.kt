@@ -1,12 +1,11 @@
 package com.example.linkclipper
 
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
+import androidx.fragment.app.Fragment
 import com.example.linkclipper.databinding.FragmentFirstBinding
 
 /**
@@ -36,6 +35,9 @@ class FirstFragment : Fragment() {
 //        binding.buttonFirst.setOnClickListener {
 //            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
 //        }
+        binding.updateButton.setOnClickListener {
+            startActivity(Intent(context, UpdateDatabaseActivity::class.java))
+        }
     }
 
     override fun onDestroyView() {

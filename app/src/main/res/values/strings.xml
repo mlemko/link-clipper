@@ -65,4 +65,5 @@
         Link here…
     </string>
     <string name="logo_desc">Sample Logo</string>
+    <string name="update_database">Update Database</string>
 </resources>
