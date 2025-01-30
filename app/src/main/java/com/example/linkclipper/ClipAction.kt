@@ -51,4 +51,24 @@ class ClipAction(private val type: ClipType, private val content: List<String>?)
         }
         return clippedLink
     }
+
+    override fun equals(other: Any?): Boolean {
+        if (other == null) return false
+        if (this === other) return true
+        if (other !is ClipAction) return false
+        if (type != other.type) return false
+        if (!content.isNullOrEmpty()) {
+            if (other.content.isNullOrEmpty() || other.content.size != content.size) return false
+            for (i in content.indices) {
+                if (content[i] != other.content[i]) return false
+            }
+        } else {
+            if (!other.content.isNullOrEmpty()) return false
+        }
+        return true
+    }
+
+    override fun hashCode(): Int {
+        return (type.toString() + content.toString()).hashCode()
+    }
 }
