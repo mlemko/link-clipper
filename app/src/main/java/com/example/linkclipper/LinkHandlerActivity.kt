@@ -34,6 +34,7 @@ class LinkHandlerActivity : AppCompatActivity() {
                     for (link in linksMap.values) {
                         if (link.domainFor(sharedText)) {
                             shareLinkActivity(link.clip(sharedText))
+                            return
                         }
                     }
                 }
